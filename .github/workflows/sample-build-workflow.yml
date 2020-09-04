@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Initiate error tracking
-        uses: spring-projects/track-build-errors-action@v0.01
+        uses: spring-projects/track-build-errors-action@v1
         with:
           job-name: "initiate-error-tracking"
       - name: Export errors file
@@ -28,13 +28,13 @@ jobs:
       - name: Sample job step
         run: echo "This is a sample job 1 step"
       - name: Track error step
-        uses: spring-projects/track-build-errors-action@v0.01
-        # if: ${{ failure() }}
+        uses: spring-projects/track-build-errors-action@v1
+        if: ${{ failure() }}
         with:
           job-name: ${{ github.job }}
       - name: Export errors file
         uses: actions/upload-artifact@v2
-        # if: ${{ failure() }}
+        if: ${{ failure() }}
         with:
           name: errors
           path: job-${{ github.job }}.txt
@@ -46,13 +46,13 @@ jobs:
       - name: Sample job step
         run: echo "This is a sample job 2 step"
       - name: Track error step
-        uses: spring-projects/track-build-errors-action@v0.01
-        # if: ${{ failure() }}
+        uses: spring-projects/track-build-errors-action@v1
+        if: ${{ failure() }}
         with:
           job-name: ${{ github.job }}
       - name: Export errors file
         uses: actions/upload-artifact@v2
-        # if: ${{ failure() }}
+        if: ${{ failure() }}
         with:
           name: errors
           path: job-${{ github.job }}.txt
@@ -64,13 +64,13 @@ jobs:
       - name: Sample job step
         run: echo "This is a sample job 3 step"
       - name: Track error step
-        uses: spring-projects/track-build-errors-action@v0.01
-        # if: ${{ failure() }}
+        uses: spring-projects/track-build-errors-action@v1
+        if: ${{ failure() }}
         with:
           job-name: ${{ github.job }}
       - name: Export errors file
         uses: actions/upload-artifact@v2
-        # if: ${{ failure() }}
+        if: ${{ failure() }}
         with:
           name: errors
           path: job-${{ github.job }}.txt
@@ -86,7 +86,7 @@ jobs:
         with:
           name: errors
       - name: Send Slack message
-        uses: spring-projects/notify-slack-errors-action@v0.02
+        uses: spring-projects/notify-slack-errors-action@v1
         with:
           slack-webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
           branch-name: ${{ github.ref }}
