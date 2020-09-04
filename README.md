@@ -1,1 +1,1 @@
-# sample-action-usage-project
+# This project demonstrates how to use the [track-build-errors-action](https://github.com/spring-projects/track-build-errors-action)ad the [notify-slack-errors-action](https://github.com/spring-projects/notify-slack-errors-action) in a Github Actions build.
